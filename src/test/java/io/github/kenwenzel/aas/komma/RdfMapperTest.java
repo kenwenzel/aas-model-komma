@@ -70,5 +70,12 @@ public class RdfMapperTest extends BaseMapperTest {
 		manager.match(null, null, null).forEach(stmt -> {
 			System.out.println(stmt);
 		});
+
+		// retrieve AAS environment from RDF store
+		manager.findAll(AssetAdministrationShellEnvironment.class).forEach(env -> {
+			env.getSubmodels().forEach(model -> {
+				System.out.println(model.getDescriptions());
+			});
+		});
 	}
 }
